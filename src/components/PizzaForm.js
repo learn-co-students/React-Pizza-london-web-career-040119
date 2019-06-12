@@ -1,14 +1,14 @@
 import React from "react"
 
-const PizzaForm = ({pizza, submitHandler}) => {
-  const {id, topping, size, vegetarian} = pizza
+const PizzaForm = ({pizza, submitHandler, changeHandler}) => {
+  const {topping, size, vegetarian} = pizza
   return(
       <div className="form-row">
         <div className="col-5">
-            <input type="text" name="topping" className="form-control" placeholder="Pizza Topping" value={topping}/>
+            <input type="text" name="topping" className="form-control" placeholder="Pizza Topping" onChange={changeHandler} value={topping}/>
         </div>
         <div className="col">
-          <select value={size} name="size" className="form-control">
+          <select onChange={changeHandler} value={size} name="size" className="form-control">
             <option value="Small">Small</option>
             <option value="Medium">Medium</option>
             <option value="Large">Large</option>
@@ -16,13 +16,13 @@ const PizzaForm = ({pizza, submitHandler}) => {
         </div>
         <div className="col">
           <div className="form-check">
-            <input className="form-check-input" type="radio" value="Vegetarian" checked={vegetarian}/>
+            <input className="form-check-input" type="radio" name="vegetarian" value="Vegetarian" onChange={changeHandler} checked={vegetarian}/>
             <label className="form-check-label">
               Vegetarian
             </label>
           </div>
           <div className="form-check">
-            <input className="form-check-input" type="radio" value="Not Vegetarian" checked={!vegetarian}/>
+            <input className="form-check-input" type="radio" name="vegetarian" value="Not Vegetarian" onChange={changeHandler} checked={!vegetarian}/>
             <label className="form-check-label">
               Not Vegetarian
             </label>
